@@ -6,6 +6,12 @@ import {
 	FaScaleBalanced,
 	FaLock,
 } from "react-icons/fa6";
+import { FaAppleAlt } from "react-icons/fa";
+import { IoIosJournal } from "react-icons/io";
+import { IoScaleSharp } from "react-icons/io5";
+import { LiaWeightSolid } from "react-icons/lia";
+
+import Warning from "../Warning";
 
 const AccountPage = () => {
 	return (
@@ -40,19 +46,18 @@ const AccountPage = () => {
 							>
 								<FaGem size={24} />
 							</a>
-							<a
-								href=""
-								className="flex gap-2 flex-col items-center justify-center"
-							>
-								<FaScaleBalanced size={24} />
-							</a>
 						</div>
 					</div>
 					<p className="text-neutral-500">Yevheniia330508</p>
 					<p className="pb-6 mb-4 border-b-2 border-neutral-300">
 						Joined June 2023
 					</p>
-					<h2 className="lilita-one text-[1.25rem] xl:text-[1.5rem] mb-2">
+					<Warning
+						title="Finish Setting up your Profile"
+						description="Enter your data to fully use the website"
+					/>
+
+					<h2 className="lilita-one text-[1.25rem] xl:text-[1.5rem] mb-2 mt-6">
 						Statistics
 					</h2>
 					<div className="grid grid-cols-2 gap-4">
@@ -62,34 +67,34 @@ const AccountPage = () => {
 							</div>
 							<div className="">
 								<h2>21</h2>
-								<h3>Lorem, ipsum.</h3>
+								<h3>Streak</h3>
 							</div>
 						</div>
 						<div className="rounded-[1rem] border-2 border-neutral-300 flex items-center justify-start py-[0.75rem] px-[1.25rem] gap-4">
 							<div className="">
-								<FaFire size={24} />
+								<IoScaleSharp size={26} />
 							</div>
 							<div className="">
-								<h2>21</h2>
-								<h3>Lorem, ipsum.</h3>
-							</div>
-						</div>
-						<div className="rounded-[1rem] border-2 border-neutral-300 flex items-center justify-start py-[0.75rem] px-[1.25rem] gap-4">
-							<div className="">
-								<FaFire size={24} />
-							</div>
-							<div className="">
-								<h2>21</h2>
-								<h3>Lorem, ipsum.</h3>
+								<h2>112</h2>
+								<h3>Weight</h3>
 							</div>
 						</div>
 						<div className="rounded-[1rem] border-2 border-neutral-300 flex items-center justify-start py-[0.75rem] px-[1.25rem] gap-4">
 							<div className="">
-								<FaFire size={24} />
+								<FaAppleAlt size={24} />
 							</div>
 							<div className="">
-								<h2>21</h2>
-								<h3>Lorem, ipsum.</h3>
+								<h2>984/1800</h2>
+								<h3>Calories</h3>
+							</div>
+						</div>
+						<div className="rounded-[1rem] border-2 border-neutral-300 flex items-center justify-start py-[0.75rem] px-[1.25rem] gap-4">
+							<div className="">
+								<IoIosJournal size={24} />
+							</div>
+							<div className="">
+								<h2>4</h2>
+								<h3>Entries today</h3>
 							</div>
 						</div>
 					</div>
