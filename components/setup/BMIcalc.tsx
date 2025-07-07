@@ -1,14 +1,12 @@
 "use client";
-
-import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 import { Button } from "@/components/ui/button";
 import {
 	Form,
 	FormControl,
-	FormDescription,
 	FormField,
 	FormItem,
 	FormLabel,
@@ -17,20 +15,29 @@ import {
 import { Input } from "@/components/ui/input";
 
 const formSchema = z.object({
-	username: z.string().min(2, {
-		message: "Username must be at least 2 characters.",
-	}),
+	weight: z.string().min(1, { message: "Weight is required" }),
+	height: z.string().min(1, { message: "Height is required" }),
+	gender: z.string().min(1, { message: "Gender is required" }),
 });
 
+type FormData = z.infer<typeof formSchema>;
+
 export default function BMIcalc() {
-	const form = useForm();
-	const onSubmit = (e: any) => {
-		console.log(e);
+	const form = useForm<FormData>({
+		resolver: zodResolver(formSchema),
+		defaultValues: {
+			weight: "",
+			height: "",
+			gender: "",
+		},
+	});
+
+	const onSubmit = (data: FormData) => {
+		console.log(data);
 	};
-	// ...
 
 	return (
-		<div className="">
+		<div>
 			<h2 className="lilita-one text-[1.25rem] xl:text-[1.5rem] mb-2">
 				Bmi Calculator
 			</h2>
@@ -39,7 +46,7 @@ export default function BMIcalc() {
 					{["weight", "height", "gender"].map((item) => (
 						<FormField
 							control={form.control}
-							name={item}
+							name={item as keyof FormData}
 							key={item}
 							render={({ field }) => (
 								<FormItem>
@@ -47,7 +54,6 @@ export default function BMIcalc() {
 									<FormControl>
 										<Input placeholder={item} {...field} />
 									</FormControl>
-
 									<FormMessage />
 								</FormItem>
 							)}

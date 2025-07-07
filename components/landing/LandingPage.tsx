@@ -45,7 +45,8 @@ const LandingPage = () => {
 						Who are we?
 					</h3>
 					<h2 className="lilita-one text-[1.5rem] lg:text-[2.5rem] xl:text-[3.5rem] text-center md:tracking-[-2px] leading-[2rem] lg:leading-[3.5rem] xl:leading-[4.5rem] w-[70vw] max-auto mb-8">
-						We're on a mission to make eating well fun, simple, and guilt-free
+						We&apos;re on a mission to make eating well fun, simple, and
+						guilt-free
 					</h2>
 					<Button text="Get Started" classes="" />
 
