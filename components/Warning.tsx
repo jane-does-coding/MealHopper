@@ -1,6 +1,6 @@
 import React from "react";
 
-const Warning = ({ color, title, description }: any) => {
+const Warning = ({ title, description }: any) => {
 	return (
 		<div className="w-full rounded-[1rem] bg-green-100 border-2 border-dashed border-green-400 px-[1rem] py-[0.5rem] flex gap-4 items-center justify-start">
 			<img

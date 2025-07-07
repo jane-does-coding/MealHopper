@@ -1,5 +1,4 @@
 import React from "react";
-import BMIcalc from "./BMIcalc";
 import PersonalInfo from "./PersonalInfo";
 import Measurements from "./Measurements";
 
