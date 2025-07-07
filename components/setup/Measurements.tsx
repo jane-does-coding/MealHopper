@@ -1,12 +1,12 @@
 "use client";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 import { Button } from "@/components/ui/button";
 import {
 	Form,
 	FormControl,
-	FormDescription,
 	FormField,
 	FormItem,
 	FormLabel,
@@ -15,17 +15,26 @@ import {
 import { Input } from "@/components/ui/input";
 
 const formSchema = z.object({
-	username: z.string().min(2, {
-		message: "Username must be at least 2 characters.",
-	}),
+	age: z.string(),
+	weight: z.string(),
+	height: z.string(),
+	gender: z.string(),
+	"activity level": z.string(),
+	waist: z.string(),
+	hip: z.string(),
+	neck: z.string(),
 });
 
+type FormValues = z.infer<typeof formSchema>;
+
 export default function Measurements() {
-	const form = useForm();
-	const onSubmit = (e: any) => {
-		console.log(e);
+	const form = useForm<FormValues>({
+		resolver: zodResolver(formSchema),
+	});
+
+	const onSubmit = (values: FormValues) => {
+		console.log(values);
 	};
-	// ...
 
 	return (
 		<div className="">
@@ -34,19 +43,10 @@ export default function Measurements() {
 					onSubmit={form.handleSubmit(onSubmit)}
 					className="grid gap-6 grid-cols-2"
 				>
-					{[
-						"age",
-						"weight",
-						"height",
-						"gender",
-						"activity level",
-						"waist",
-						"hip",
-						"neck",
-					].map((item) => (
+					{Object.keys(formSchema.shape).map((item) => (
 						<FormField
 							control={form.control}
-							name={item}
+							name={item as keyof FormValues}
 							key={item}
 							render={({ field }) => (
 								<FormItem>
@@ -54,16 +54,15 @@ export default function Measurements() {
 									<FormControl>
 										<Input placeholder={item} {...field} />
 									</FormControl>
-
 									<FormMessage />
 								</FormItem>
 							)}
 						/>
 					))}
+					<Button type="submit" className="col-span-2">
+						Update
+					</Button>
 				</form>
-				<Button type="submit" className="mt-6 w-full">
-					Update
-				</Button>
 			</Form>
 		</div>
 	);
